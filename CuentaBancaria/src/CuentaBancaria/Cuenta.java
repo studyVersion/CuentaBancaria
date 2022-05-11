@@ -34,8 +34,8 @@ public class Cuenta {
 		
 	}
 	
-	public static void agregarMovimiento() {
-		Movimiento gasto = new Movimiento();
+	public static Movimiento agregarMovimiento() {
+		
 		static String [] categorias = new String {"Vivienda","Transporte","Ocio"};
 		static String [] destino = new String {"In","Out"};
 		System.out.println("Dime la cantidad ");
@@ -44,10 +44,18 @@ public class Cuenta {
 		for (int i=0 ; i< destino.length; i++) {
 			System.out.println(i+1 + " Parra "+ destino[i]);
 		}
-		System.out.println("Dime la fecha ");
+		int j = Integer.parseInt(sc.nextLine());
+		String des = destino[j-1];
+		System.out.println("la fecha del movimiento es ");
+		Date fecha = new Date();
+		System.out.println(fecha);
 		System.out.println("Dime la categoria ");
 		for (int i=0 ; i< categoria.length; i++) {
 			System.out.println(i+1 + " Parra "+ categorias[i]);
 		}
+		j = Integer.parseInt(sc.nextLine());
+		String cat = categorias[j-1];
+		Movimiento gasto = new Movimiento(cant,des,fecha,cat);
+		return gasto;
 	}//agregarMov
 }
