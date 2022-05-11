@@ -1,30 +1,28 @@
 package CuentaBancaria;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Cuenta {
-     static Scanner sc = new Scanner();      
+     static Scanner sc = new Scanner(System.in);      
      //Lista para guardar los movimientos
      ArrayList <Movimiento> libreCuenta = new ArrayList<>();
      
      
 	final String nombre = "Badre serhiri";
 	final String id = "ES123456789";
-	static float saldo = 10000.00;
-	static String [] destino_enviador = new String {"in","out"};
+	static float saldo = 10000;
+	//static String [] destino_enviador = new String {"in","out"};
 	
 	public void setSalado(float saldo) {
 		this.saldo = saldo;
 	}
-	public String getSaldo() {
+	public float getSaldo() {
 		return saldo;
 	}
 	
 	// metodo parra gastos
-	public float gastos() {
-		System.out.println("Name ");
-		Movimiento gasto = new Movimiento();
-	}
 	
 	// metodo para ingresos
 	
@@ -36,8 +34,8 @@ public class Cuenta {
 	
 	public static Movimiento agregarMovimiento() {
 		
-		static String [] categorias = new String {"Vivienda","Transporte","Ocio"};
-		static String [] destino = new String {"In","Out"};
+		String [] categorias = {"Vivienda","Transporte","Ocio"};
+		String [] destino = {"In","Out"};
 		System.out.println("Dime la cantidad ");
 		float cant = Float.parseFloat(sc.nextLine());
 		System.out.println("Dime el distinatario ");
@@ -50,7 +48,7 @@ public class Cuenta {
 		Date fecha = new Date();
 		System.out.println(fecha);
 		System.out.println("Dime la categoria ");
-		for (int i=0 ; i< categoria.length; i++) {
+		for (int i=0 ; i< categorias.length; i++) {
 			System.out.println(i+1 + " Parra "+ categorias[i]);
 		}
 		j = Integer.parseInt(sc.nextLine());
