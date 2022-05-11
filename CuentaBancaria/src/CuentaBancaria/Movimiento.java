@@ -8,14 +8,15 @@ public class Movimiento {
 	
 	Date fecha_hora; // Date fecha = new Date( ); SimpleDateFormat format =   new SimpleDateFormat ("'Fecha:' yyyy.MM.dd 'a la Hora:' hh:mm:ss");
      // System.out.println("Current Date: " + format.format(fecha));
-	String destino;
-	double cantidad;
+	String destino_enviador;
+	float cantidad;
 	String categoria;
 	
-	public Movimiento(String destino, double cantidad, String categoria) {
-		this.destino = destino;
+	public Movimiento(String destino_enviador, float cantidad, String categoria) {
+		this.destino_enviador = destino_enviador;
 		this.cantidad = cantidad;
 		this.categoria = categoria;
+		this.fecha_hora= new Date();
 		
 	}
 	
@@ -36,11 +37,11 @@ public class Movimiento {
 		this.destino = destino;
 	}
 
-	public double getCantidad() {
+	public float getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(double cantidad) {
+	public void setCantidad(float cantidad) {
 		this.cantidad = cantidad;
 	}
 
