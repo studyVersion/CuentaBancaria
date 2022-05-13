@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Cuenta {
+public class Main {
      static Scanner sc = new Scanner(System.in);      
      //Lista para guardar los movimientos
-     ArrayList <Movimiento> libreCuenta = new ArrayList<>();
+    static  ArrayList <Movimiento> libreCuenta = new ArrayList<>();
      
      
 	final String nombre = "Badre serhiri";
@@ -28,7 +28,8 @@ public class Cuenta {
 	
 	public static void main(String[] args) {
 		System.out.println("Bienvinida a tu APP");
-		
+		Movimiento mov = agregarMovimiento();
+		System.out.println(mov.toString());
 		
 	}
 	
@@ -44,7 +45,7 @@ public class Cuenta {
 		}
 		int j = Integer.parseInt(sc.nextLine());
 		String des = destino[j-1];
-		System.out.println("la fecha del movimiento es ");
+		System.out.println("la fecha del movimiento es:\n");
 		Date fecha = new Date();
 		System.out.println(fecha);
 		System.out.println("Dime la categoria ");
@@ -54,6 +55,7 @@ public class Cuenta {
 		j = Integer.parseInt(sc.nextLine());
 		String cat = categorias[j-1];
 		Movimiento gasto = new Movimiento(cant,des,fecha,cat);
+		libreCuenta.add(gasto);
 		return gasto;
 	}//agregarMov
 }
