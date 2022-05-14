@@ -6,7 +6,7 @@ import java.util.Date;
 public class Movimiento {
 
 	
-	static Date fecha_hora; // Date fecha = new Date( ); SimpleDateFormat format =   new SimpleDateFormat ("'Fecha:' yyyy.MM.dd 'a la Hora:' hh:mm:ss");
+	 Date fecha_hora; // Date fecha = new Date( ); SimpleDateFormat format =   new SimpleDateFormat ("'Fecha:' yyyy.MM.dd 'a la Hora:' hh:mm:ss");
      // System.out.println("Current Date: " + format.format(fecha));
 	 String destino;
 	 float cantidad;
