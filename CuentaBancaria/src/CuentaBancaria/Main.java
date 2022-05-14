@@ -103,28 +103,33 @@ public class Main {
 	}//agregarMov
 	
 	    
-        public static void insertMovimiento(Movimiento mov) throws SQLException { // metodo parra insertar movimientos
+            public static void insertMovimiento(Movimiento mov) throws SQLException { // metodo parra insertar movimientos
+        	Connection connectdb = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "badre","c123");
+    		Statement myConexion = connectdb.createStatement();
         	
-		DecimalFormat pointToComma = (DecimalFormat)DecimalFormat.getNumberInstance(Locale.GERMAN); // change "." in decimal by ","
-		SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy hh:mm"); // change date format 
-		Connection connectdb = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "badre","c123");
-		Statement myConexion = connectdb.createStatement();
+            DecimalFormat df = new DecimalFormat("#.00");
+            DecimalFormatSymbols sym = DecimalFormatSymbols.getInstance(); // change "." in decimal by ","
+            sym.setDecimalSeparator(',');
+            df.setDecimalFormatSymbols(sym);
+	     	SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy hh:mm"); // change date format 
 		
-		String query =  "insert into  movimientos (fecha_hora, destino, cantidad, categoria)"                   // insert query        
+		
+		    String query =  "insert into  movimientos (fecha_hora, destino, cantidad, categoria)"                   // insert query        
 				            +"VALUES ( '"+formatDate.format(mov.getFecha_hora())+"' , '"+mov.getDestino()+
-				            "' , '"+pointToComma.format(mov.getCantidad()) +"', '"+mov.getCategoria()+"')";
+				            "' , '"+df.format(mov.getCantidad())+"', '"+mov.getCategoria()+"')";
 				           
-        int myResult  = myConexion.executeUpdate(query); //execute statement
-        
-        if (myResult>0) { // make sure row inserted
+            int myResult  = myConexion.executeUpdate(query); //execute statement
+          
+              if (myResult>0) { // make sure row inserted
 	       
         	System.out.println( myResult+ " row was inserted.\n");
 	    
-        } else System.out.println("ERROR OCCURED! id is not registered\n");
+             } else System.out.println("ERROR OCCURED! id is not registered\n");
         
-	    myConexion.close();
+	    myConexion.close(); 
       
       }//insertMovimiento
+        
         
        
        public static void updateMovimientoCategoria(int id) throws SQLException {
